@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"zocketTask/crud/handler"
+	"zocketTask/csv"
 	rootFunc "zocketTask/root"
 )
 
@@ -13,7 +14,7 @@ func RegisterRoutes(app *fiber.App) {
 	app.Post(movie, handler.CreateMovie)
 
 	app.Post(books, handler.CreateMoreBooks)
-	app.Post(movies, handler.CreateMoreBooks)
+	app.Post(movies, handler.CreateMoreMovies)
 
 	app.Get(bookID, handler.GetBook)
 	app.Get(movieID, handler.GetMovie)
@@ -26,4 +27,6 @@ func RegisterRoutes(app *fiber.App) {
 
 	app.Delete(bookID, handler.DeleteBook)
 	app.Delete(movieID, handler.DeleteMovie)
+
+	app.Get(readCSV, csv.ReadCSV)
 }
