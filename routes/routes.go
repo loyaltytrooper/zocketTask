@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"zocketTask/crud/handler"
 	"zocketTask/csv"
+	"zocketTask/files"
 	rootFunc "zocketTask/root"
 )
 
@@ -29,4 +30,6 @@ func RegisterRoutes(app *fiber.App) {
 	app.Delete(movieID, handler.DeleteMovie)
 
 	app.Get(readCSV, csv.ReadCSV)
+
+	app.Get(getImagesBase64, files.DownloadFiles)
 }
