@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="CRUDtask@localhost" uuid="91c3b503-1c71-4afe-983c-ca76bbc0ae7a">
+    <data-source source="LOCAL" name="crud_bfs4@dpg-cfe7tskgqg46rpmprqc0-a.singapore-postgres.render.com" uuid="92315cd2-4c84-406d-8520-b4250974591a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/CRUDtask</jdbc-url>
+      <jdbc-url>jdbc:postgresql://dpg-cfe7tskgqg46rpmprqc0-a.singapore-postgres.render.com:5432/crud_bfs4</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

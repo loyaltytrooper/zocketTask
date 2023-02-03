@@ -3,18 +3,14 @@ package routes
 var (
 	root = "/"
 
-	createBook  = ""
-	createMovie = ""
-	createFood  = ""
-	getBook     = ""
-	getMovie    = ""
-	getFood     = ""
-	updateBook  = ""
-	updateMovie = ""
-	updateFood  = ""
-	deleteBook  = ""
-	deleteMovie = ""
-	deleteFood  = ""
+	book  = "/book"
+	books = "/books"
+
+	movie  = "/movie"
+	movies = "/movies"
+
+	bookID  = "/book/:id"
+	movieID = "/movie/:id"
 
 	readCSV = "/csv/read"
 
