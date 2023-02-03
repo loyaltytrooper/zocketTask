@@ -1,0 +1,25 @@
+Simple Task for a Go (Golang) Intern:
+     Create a simple web server using Go: The intern should create a basic web
+    server using the Go programming language that listens on a specific port and
+    returns “Hello, World!” when a user accesses the root endpoint.
+
+     Implement a basic CRUD API: The intern should create a basic CRUD (Create,
+    Read, Update, Delete) API using Go that allows a user to manage a list of items
+    (e.g., books, movies, etc.). The API should include endpoints for creating,
+    reading, updating, and deleting items.
+    "Books, Movies, Food"
+
+     Write a Go program to parse a CSV file: The intern should write a Go program
+    that reads a CSV file and parses its contents into a data structure (e.g., a slice
+    of structs). The program should then output the data in a formatted way (e.g.,
+    as a table).
+    "CSV Program that will take locally available csv file and then parse its content"
+
+     Implement a concurrent program: The intern should write a Go program that
+    performs a task concurrently using Goroutines and Channels. For example, the
+    program could download multiple files from the internet at the same time.
+    These tasks are intended to help the intern get familiar with the basics of Go
+    programming and build their skills.
+
+    "Can make an API that can take different image URLs array, download them and then return an array of base64 encodings of those images
+    An API that will download the given file URLs locally or upload them to the given gDrive link"
