@@ -10,7 +10,7 @@ var CRUD_DB *pgx.Conn
 
 func InitDB() {
 	var err error
-	if CRUD_DB, err = pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"); err != nil {
+	if CRUD_DB, err = pgx.Connect(context.Background(), os.Getenv("DATABASE_URL")); err != nil {
 		log.Fatalf("Error fetching DB, %s", err.Error())
 	}
 	log.Println("Connected to DB now")
