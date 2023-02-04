@@ -26,7 +26,8 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/book"
+						"url": "https://zockettask-production.up.railway.app/book",
+						"description": "BOOK Create API:\n\nThe POST request will take the body in the same JSON body format as passed.\n\nThere is no need of providing ID as while providing ID PostgreSQL's auto-serializer will provide the row an ID and you'll recive the same along with the response."
 					},
 					"response": []
 				},
@@ -47,7 +48,8 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/book"
+						"url": "https://zockettask-production.up.railway.app/book",
+						"description": "StartFragment\n\nBOOK Update API:\n\nThe UPDATE request will take the body in the same JSON body format as passed."
 					},
 					"response": []
 				},
@@ -56,7 +58,8 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/book/6"
+						"url": "https://zockettask-production.up.railway.app/book/8",
+						"description": "StartFragment\n\nBOOK Get API:\n\nThe GET request will need only the ID of record.\n\nThere is no need of providing a body since this is an implicit parameter based request"
 					},
 					"response": []
 				},
@@ -77,7 +80,8 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/books"
+						"url": "https://zockettask-production.up.railway.app/books",
+						"description": "Please provide an array of the same JSON objects passed in \"Add a book\" request body, to add multiple books in single request"
 					},
 					"response": []
 				},
@@ -86,7 +90,8 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/book"
+						"url": "https://zockettask-production.up.railway.app/book",
+						"description": "Simple GET request to get all the books present on the database"
 					},
 					"response": []
 				},
@@ -95,7 +100,8 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/book/9"
+						"url": "https://zockettask-production.up.railway.app/book/9",
+						"description": "Delete Request to delete the book record from the database using the ID parameter"
 					},
 					"response": []
 				}
@@ -121,7 +127,7 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/movie"
+						"url": "https://zockettask-production.up.railway.app/movie"
 					},
 					"response": []
 				},
@@ -142,7 +148,7 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/movie"
+						"url": "https://zockettask-production.up.railway.app/movie"
 					},
 					"response": []
 				},
@@ -151,7 +157,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/movie/8"
+						"url": "https://zockettask-production.up.railway.app/movie/8"
 					},
 					"response": []
 				},
@@ -172,7 +178,7 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/movies"
+						"url": "https://zockettask-production.up.railway.app/movies"
 					},
 					"response": []
 				},
@@ -181,7 +187,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/movie"
+						"url": "https://zockettask-production.up.railway.app/movie"
 					},
 					"response": []
 				},
@@ -190,7 +196,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/movie/8"
+						"url": "https://zockettask-production.up.railway.app/movie/8"
 					},
 					"response": []
 				}
@@ -204,7 +210,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/"
+						"url": "https://zockettask-production.up.railway.app/"
 					},
 					"response": []
 				}
@@ -227,7 +233,7 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/images/base64"
+						"url": "https://zockettask-production.up.railway.app/images/base64"
 					},
 					"response": []
 				},
@@ -248,7 +254,7 @@
 								}
 							}
 						},
-						"url": "https://rajat-zocket-task.onrender.com/images/base64"
+						"url": "https://zockettask-production.up.railway.app/images/base64"
 					},
 					"response": []
 				}
@@ -262,7 +268,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://rajat-zocket-task.onrender.com/csv/read"
+						"url": "https://zockettask-production.up.railway.app/csv/read"
 					},
 					"response": []
 				}
