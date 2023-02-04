@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"log"
 	"time"
 	"zocketTask/crud/database"
@@ -10,8 +9,6 @@ import (
 )
 
 func main() {
-	godotenv.Load()
-
 	database.InitDB()
 	defer database.CloseDB()
 
@@ -23,5 +20,5 @@ func main() {
 	}
 
 	routes.RegisterRoutes(app)
-	log.Fatal(app.Listen("127.0.0.1:9010"))
+	log.Fatal(app.Listen(":80"))
 }

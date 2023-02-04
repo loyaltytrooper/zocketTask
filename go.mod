@@ -4,10 +4,7 @@ go 1.19
 
 require github.com/gofiber/fiber/v2 v2.41.0 // indirect\
 
-require (
-	github.com/jackc/pgx/v5 v5.2.0
-	github.com/joho/godotenv v1.4.0
-)
+require github.com/jackc/pgx/v5 v5.2.0
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
