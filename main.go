@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"log"
+	"os"
 	"time"
 	"zocketTask/crud/database"
 	"zocketTask/routes"
@@ -20,5 +21,5 @@ func main() {
 	}
 
 	routes.RegisterRoutes(app)
-	log.Fatal(app.Listen(":8080"))
+	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }

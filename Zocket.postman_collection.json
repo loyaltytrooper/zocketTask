@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "bcdc661d-5978-44f3-9dc0-25408b255bc0",
+		"name": "Zocket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18046491"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Add a book",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"fictional\",\r\n    \"title\": \"Harry Potter\",\r\n    \"author\": \"J.K. Rowling\",\r\n    \"price\": 25.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/book"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"category\": \"non-fictional\",\r\n    \"title\": \"Life of Pi\",\r\n    \"author\": \"Ghost Writer\",\r\n    \"price\": 35.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/book"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/book/6"
+					},
+					"response": []
+				},
+				{
+					"name": "Add books",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"books\": [\r\n        {\r\n            \"category\": \"fictional\",\r\n            \"title\": \"Atomic habits\",\r\n            \"author\": \"Dont Remember\",\r\n            \"price\": 15.99\r\n        },\r\n        {\r\n            \"category\": \"fictional\",\r\n            \"title\": \"Ikigai\",\r\n            \"author\": \"Dont Remember\",\r\n            \"price\": 23.99\r\n        },\r\n        {\r\n            \"category\": \"fictional\",\r\n            \"title\": \"Harry Potter\",\r\n            \"author\": \"J.K. Rowling\",\r\n            \"price\": 25.99\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/books"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/book"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/book/9"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Add a movie",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Thor\",\r\n    \"director\": \"Kevin Feige\",\r\n    \"category\": \"Comic\",\r\n    \"actors\": [\"Chris Hemsworth\"],\r\n    \"ticket_price\": 5.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/movie"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 8,\r\n    \"name\": \"Life of Pi\",\r\n    \"category\": \"non-fictional\",\r\n    \"director\": \"Christian himself\",\r\n    \"actors\": [\"Check\"],\r\n    \"ticket_price\": 35.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/movie"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/movie/8"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Movies",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movies\": [\r\n        {\r\n            \"name\": \"Batman\",\r\n            \"director\": \"Christopher Nolan\",\r\n            \"category\": \"Comic\",\r\n            \"actors\": [\r\n                \"Christian Bale\", \r\n                \"Anne Hathaway\"\r\n            ],\r\n            \"ticket_price\": 10.99\r\n        },\r\n        {\r\n            \"name\": \"Batman2\",\r\n            \"director\": \"Christopher Nicholas\",\r\n            \"category\": \"Comic\",\r\n            \"actors\": [\r\n                \"Christian Bale\", \r\n                \"Anne Hathaway\"\r\n            ],\r\n            \"ticket_price\": 10.99\r\n        },\r\n        {\r\n            \"name\": \"Batman3\",\r\n            \"director\": \"Christopher Nicholas\",\r\n            \"category\": \"Comic\",\r\n            \"actors\": [\r\n                \"Christian Bale\", \r\n                \"Anne Hathaway\"\r\n            ],\r\n            \"ticket_price\": 10.99\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/movie"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/movie/8"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Root",
+			"item": [
+				{
+					"name": "Root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Download",
+			"item": [
+				{
+					"name": "Download locally on Server",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"urls\": [\r\n        \"https://ghantee.com/wp-content/uploads/2022/08/most-beautiful-trishul-image-on-the-internet-today-576x1024.jpg\",\r\n        \"https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/images/base64"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Download",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"file\": \"most-beautiful-trishul-image-on-the-internet-today-576x1024.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://rajat-zocket-task.onrender.com/images/base64"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CSV",
+			"item": [
+				{
+					"name": "Read CSV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://rajat-zocket-task.onrender.com/csv/read"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
