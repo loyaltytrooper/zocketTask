@@ -11,8 +11,9 @@ import (
 func CreateBook(ctx *fiber.Ctx) error {
 	bookPayload := new(models.Book)
 	if err := ctx.BodyParser(&bookPayload); err != nil {
-		log.Fatalf("Error parsing the payload request: %s", err.Error())
-		return ctx.SendStatus(422)
+		return ctx.Status(422).JSON(fiber.Map{
+			"error": err.Error(),
+		})
 	}
 
 	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "insert into book(title, author, type, price)  values ($1, $2, $3, $4) returning (id)", bookPayload.Title, bookPayload.Author, bookPayload.Type, bookPayload.Price).Scan(&bookPayload.ID)
@@ -26,8 +27,9 @@ func CreateBook(ctx *fiber.Ctx) error {
 func CreateMoreBooks(ctx *fiber.Ctx) error {
 	var booksPayload models.Books
 	if err := ctx.BodyParser(&booksPayload); err != nil {
-		log.Fatalf("Error parsing the payload request: %s", err.Error())
-		return ctx.SendStatus(422)
+		return ctx.Status(422).JSON(fiber.Map{
+			"error": err.Error(),
+		})
 	}
 
 	query := fmt.Sprintf("insert into book(title, author, type, price) ")
@@ -38,12 +40,10 @@ func CreateMoreBooks(ctx *fiber.Ctx) error {
 		}
 	}
 
-	log.Print(query)
 	_, err := database.CRUD_DB.Query(ctx.UserContext(), query)
-	log.Print("----")
 	if err != nil {
 		return ctx.Status(400).JSON(fiber.Map{
-			"error": (err.Error()),
+			"error": err.Error(),
 		})
 	}
 
@@ -92,14 +92,16 @@ func GetAllBooks(ctx *fiber.Ctx) error {
 func UpdateBook(ctx *fiber.Ctx) error {
 	bookPayload := new(models.Book)
 	if err := ctx.BodyParser(&bookPayload); err != nil {
-		log.Fatalf("Error parsing the payload request: %s", err.Error())
-		return ctx.SendStatus(422)
+		return ctx.Status(422).JSON(fiber.Map{
+			"error": err.Error(),
+		})
 	}
 
 	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "update book set title=$1, author=$2, type=$3, price=$4 WHERE id = $5 returning *", bookPayload.Title, bookPayload.Author, bookPayload.Type, bookPayload.Price, bookPayload.ID).Scan(&bookPayload.Title, &bookPayload.Author, &bookPayload.Type, &bookPayload.Price, &bookPayload.ID)
 	if err != nil {
-		log.Fatalf("Error executing the update query: %s", err.Error())
-		return ctx.SendStatus(422)
+		return ctx.Status(500).JSON(fiber.Map{
+			"error": err.Error(),
+		})
 	}
 
 	return ctx.Status(200).JSON(bookPayload)
@@ -111,7 +113,6 @@ func DeleteBook(ctx *fiber.Ctx) error {
 
 	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "delete from book where id=$1 returning *", bookID).Scan(&bookPayload.Title, &bookPayload.Type, &bookPayload.Author, &bookPayload.Price, &bookPayload.ID)
 	if err != nil {
-		log.Print(err.Error())
 		return ctx.Status(400).JSON(fiber.Map{
 			"error": err.Error(),
 		})

@@ -31,5 +31,6 @@ func RegisterRoutes(app *fiber.App) {
 
 	app.Get(readCSV, csv.ReadCSV)
 
-	app.Get(getImagesBase64, files.DownloadFiles)
+	app.Post(getImagesBase64, files.DownloadFiles)
+	app.Get(getImagesBase64, files.GetImage)
 }

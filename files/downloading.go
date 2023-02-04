@@ -3,38 +3,44 @@ package files
 import (
 	"github.com/gofiber/fiber/v2"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path"
 )
 
-type ImageURLs struct {
-	URLs []string `json:"urls" form:"urls"`
-}
-
 var downloadChannel = make(chan string, 15)
+
+func GetImage(ctx *fiber.Ctx) error {
+	var file URL
+	if err := ctx.BodyParser(&file); err != nil {
+		return ctx.Status(422).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+
+	if _, err := os.Stat(file.File); err == nil {
+		return ctx.Status(200).SendFile(file.File)
+	} else {
+		return ctx.Status(404).JSON(fiber.Map{
+			"error": "File not found, try re-downloading",
+		})
+	}
+}
 
 func DownloadFiles(ctx *fiber.Ctx) error {
 	var urls ImageURLs
 	if err := ctx.BodyParser(&urls); err != nil {
-		log.Fatalf("Error parsing the payload request: %s", err.Error())
-		return ctx.SendStatus(422)
+		return ctx.Status(422).JSON(fiber.Map{
+			"error": err.Error(),
+		})
 	}
-	log.Println("---1")
 	for _, v := range urls.URLs {
-		log.Println("---3")
 		go downloadFile(v)
-		log.Println("---4")
 	}
-	log.Println("---2")
 	var images []string
 	for i := 0; i < len(urls.URLs); i++ {
-		log.Println("---5")
 		x := <-downloadChannel
-		log.Println("---6")
 		images = append(images, x)
-		log.Println(images)
 	}
 
 	return ctx.Status(200).JSON(fiber.Map{

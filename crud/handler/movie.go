@@ -16,7 +16,21 @@ func CreateMovie(ctx *fiber.Ctx) error {
 		})
 	}
 
-	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "insert into movie(name, director, type, actors, ticketprice)  values ($1, $2, $3, $4) returning (id)", moviePayload.Name, moviePayload.Director, moviePayload.Type, moviePayload.Actors, moviePayload.TicketPrice).Scan(&moviePayload.ID)
+	query := fmt.Sprint("insert into movie(name, director, type, ticketprice, actors) ")
+
+	if len(moviePayload.Actors) > 0 {
+		query += fmt.Sprintf("values ('%s', '%s', '%s', %f, ARRAY [", moviePayload.Name, moviePayload.Director, moviePayload.Type, moviePayload.TicketPrice)
+		query += "'" + moviePayload.Actors[0] + "'"
+		for x := 1; x < len(moviePayload.Actors); x++ {
+			query += ", '" + moviePayload.Actors[x] + "'"
+		}
+		query += "]) returning id"
+	} else {
+		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Empty actors array passed",
+		})
+	}
+	err := database.CRUD_DB.QueryRow(ctx.UserContext(), query).Scan(&moviePayload.ID)
 	if err != nil {
 		return ctx.Status(4000).JSON(fiber.Map{
 			"error": fmt.Sprintf("Error executing Database Query: %s", err.Error()),
@@ -53,7 +67,6 @@ func CreateMoreMovies(ctx *fiber.Ctx) error {
 		}
 	}
 
-	log.Print(query)
 	_, err := database.CRUD_DB.Query(ctx.UserContext(), query)
 	if err != nil {
 		return ctx.Status(400).JSON(fiber.Map{
@@ -73,7 +86,7 @@ func GetMovie(ctx *fiber.Ctx) error {
 	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "select * from movie where id=$1", movieID).Scan(&moviePayload.Name, &moviePayload.Director, &moviePayload.Type, &moviePayload.Actors, &moviePayload.TicketPrice, &moviePayload.ID)
 	if err != nil {
 		return ctx.Status(400).JSON(fiber.Map{
-			"error": err,
+			"error": err.Error(),
 		})
 	}
 
@@ -111,9 +124,24 @@ func UpdateMovie(ctx *fiber.Ctx) error {
 		})
 	}
 
-	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "update movie set name=$1, director=$2, type=$3, actors=$4, ticketprice=$5 WHERE id = $5 returning *", moviePayload.Name, moviePayload.Director, moviePayload.Type, moviePayload.Actors, moviePayload.TicketPrice, moviePayload.ID).Scan(&moviePayload.Name, &moviePayload.Director, &moviePayload.Type, &moviePayload.Actors, &moviePayload.TicketPrice, &moviePayload.ID)
+	query := fmt.Sprintf("update movie set name='%s', director='%s', type='%s', ticketprice=%f, actors=", moviePayload.Name, moviePayload.Director, moviePayload.Type, moviePayload.TicketPrice)
+
+	if len(moviePayload.Actors) > 0 {
+		query += "ARRAY ["
+		query += "'" + moviePayload.Actors[0] + "'"
+		for x := 1; x < len(moviePayload.Actors); x++ {
+			query += ", '" + moviePayload.Actors[x] + "'"
+		}
+		query += fmt.Sprintf("] where id=%d returning *", moviePayload.ID)
+	} else {
+		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Empty actors array passed",
+		})
+	}
+
+	err := database.CRUD_DB.QueryRow(ctx.UserContext(), query).Scan(&moviePayload.Name, &moviePayload.Director, &moviePayload.Type, &moviePayload.Actors, &moviePayload.TicketPrice, &moviePayload.ID)
 	if err != nil {
-		return ctx.Status(400).JSON(fiber.Map{
+		return ctx.Status(200).JSON(fiber.Map{
 			"error": err.Error(),
 		})
 	}
@@ -127,7 +155,6 @@ func DeleteMovie(ctx *fiber.Ctx) error {
 
 	err := database.CRUD_DB.QueryRow(ctx.UserContext(), "delete from movie where id=$1 returning *", movieID).Scan(&movie.Name, &movie.Director, &movie.Type, &movie.Actors, &movie.TicketPrice, &movie.ID)
 	if err != nil {
-		log.Print(err.Error())
 		return ctx.Status(400).JSON(fiber.Map{
 			"error": err.Error(),
 		})

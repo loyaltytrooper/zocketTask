@@ -24,5 +24,5 @@ func CloseDB() {
 			log.Fatalf("Error closing DB, %s", err.Error())
 		}
 	}(CRUD_DB, context.Background())
-	log.Println("Closed to DB now")
+	log.Println("Closed DB now")
 }
